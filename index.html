@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Expert - Generador Minimalista</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="editor-panel">
+            <header class="editor-header">
+                <h1>CV Creator</h1>
+                <p>Diseño Minimalista & Profesional</p>
+            </header>
+            
+            <div class="form-container">
+                <section class="form-section">
+                    <h3>1. Encabezado <small>Contacto directo</small></h3>
+                    <input type="text" id="in-name" placeholder="Nombre Completo" oninput="update()">
+                    <input type="text" id="in-role" placeholder="Puesto (Ej: Senior Developer)" oninput="update()">
+                    <input type="text" id="in-email" placeholder="Correo Profesional" oninput="update()">
+                    <input type="text" id="in-web" placeholder="LinkedIn / Portfolio URL" oninput="update()">
+                </section>
+
+                <section class="form-section">
+                    <h3>2. Perfil <small>El "Gancho"</small></h3>
+                    <p class="help-text">Resume tu valor: Años de experiencia + Logro principal.</p>
+                    <textarea id="in-profile" placeholder="Ej: Especialista en... con más de 5 años de éxito en..." oninput="update()"></textarea>
+                </section>
+
+                <section class="form-section">
+                    <h3>3. Experiencia <small>Logros, no tareas</small></h3>
+                    <p class="help-text">Usa: Acción + Contexto + Resultado.</p>
+                    <textarea id="in-exp" placeholder="Empresa | Cargo | Fecha&#10;• Logré aumentar un 20%..." rows="6" oninput="update()"></textarea>
+                </section>
+
+                <section class="form-section">
+                    <h3>4. Skills y Educación</h3>
+                    <input type="text" id="in-skills" placeholder="Habilidades (Separadas por comas)" oninput="update()">
+                    <input type="text" id="in-edu" placeholder="Título | Institución | Año" oninput="update()">
+                </section>
+            </div>
+
+            <button class="btn-download" onclick="downloadPDF()">Exportar a PDF A4</button>
+        </aside>
+
+        <main class="preview-panel">
+            <div id="cv-template" class="a4-page">
+                <header class="cv-header">
+                    <h2 id="out-name">TU NOMBRE</h2>
+                    <p id="out-role" class="subtitle">PROFESIÓN</p>
+                </header>
+
+                <div class="content-grid">
+                    <aside class="cv-sidebar">
+                        <div class="section-block">
+                            <h4>Contacto</h4>
+                            <p id="out-email" class="small-text">email@ejemplo.com</p>
+                            <p id="out-web" class="small-text">linkedin.com/in/usuario</p>
+                        </div>
+                        <div class="section-block">
+                            <h4>Habilidades</h4>
+                            <p id="out-skills" class="small-text">Habilidad 1, Habilidad 2, Habilidad 3...</p>
+                        </div>
+                    </aside>
+
+                    <section class="cv-main-info">
+                        <div class="section-block">
+                            <h4>Perfil Profesional</h4>
+                            <p id="out-profile">Escribe un resumen estratégico de tu carrera en el editor. Un buen perfil resume tu trayectoria en 3 o 4 líneas impactantes.</p>
+                        </div>
+                        <div class="section-block">
+                            <h4>Experiencia Laboral</h4>
+                            <p id="out-exp" style="white-space: pre-line;">Describe aquí tus puestos anteriores enfocándote en resultados cuantificables.</p>
+                        </div>
+                        <div class="section-block">
+                            <h4>Educación</h4>
+                            <p id="out-edu">Tu formación académica principal aparecerá aquí.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
